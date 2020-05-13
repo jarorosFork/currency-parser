@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LogEntryController {
     private final LogEntryRepository logEntryRepository;
-    public static final String URL = "/log/list";
+    public static final String URL = "/log";
 
     @GetMapping(URL)
     public ModelAndView list(ModelAndView modelAndView){

@@ -25,10 +25,10 @@ public class LogExecutionAspect {
         Object result;
         try {
             result = pjp.proceed();
-            saveLogEntry(currencyCode, request);
         } catch (Throwable e) {
-            saveLogEntry(currencyCode, request);
             throw new RuntimeException(e);
+        } finally {
+            saveLogEntry(currencyCode, request);
         }
         return result;
     }

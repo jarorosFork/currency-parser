@@ -2,6 +2,7 @@ package me.bill.currencyparser.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ public class LogEntry {
     @Id
     @GeneratedValue
     private Long id;
+
 
     private LocalDateTime requestDateTime;
     private String currencyCode;

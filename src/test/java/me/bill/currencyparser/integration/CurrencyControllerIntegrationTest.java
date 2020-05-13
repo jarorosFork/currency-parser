@@ -23,17 +23,17 @@ public class CurrencyControllerIntegrationTest extends BaseIntegrationTest {
                 .contentType("application/json"))
                 .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
         CurrencyView currencyView = objectMapper.readValue(jsonResult, CurrencyView.class);
-        Assertions.assertEquals(currencyView.getAlphabeticCode(), CODE);
-        Assertions.assertEquals(currencyView.getNumericCode(), "784");
-        Assertions.assertEquals(currencyView.getMinorUnit(), "2");
-        Assertions.assertEquals(currencyView.getCurrency(), "United Arab Emirates dirham");
+        Assertions.assertEquals(CODE, currencyView.getAlphabeticCode());
+        Assertions.assertEquals("784", currencyView.getNumericCode());
+        Assertions.assertEquals("2", currencyView.getMinorUnit());
+        Assertions.assertEquals("United Arab Emirates dirham", currencyView.getCurrency());
     }
 
     @Test
     @SuppressWarnings("unchecked")
     void shouldReturnFailedValidation() {
-        Map<String, Object> response = (Map<String, Object>)testRestTemplate.getForEntity(CurrencyController.URL.replace("{code}", CODE_BAD_CODE_WITH_CHAR), Map.class).getBody();
-        Assertions.assertEquals("getCurrency.code: must match \"[A-Z]+\", getCurrency.code: size must be between 3 and 3", response.get("message"), "Message is no ");
+        Map<String, String> response = (Map<String, String>)testRestTemplate.getForEntity(CurrencyController.URL.replace("{code}", CODE_BAD_CODE_WITH_CHAR), Map.class).getBody();
+        Assertions.assertTrue(response.get("message").contains("getCurrency.code"), "Message is no ");
     }
 
 }

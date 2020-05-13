@@ -33,7 +33,7 @@ public class CurrencyControllerIntegrationTest extends BaseIntegrationTest {
     @SuppressWarnings("unchecked")
     void shouldReturnFailedValidation() {
         Map<String, String> response = (Map<String, String>)testRestTemplate.getForEntity(CurrencyController.URL.replace("{code}", CODE_BAD_CODE_WITH_CHAR), Map.class).getBody();
-        Assertions.assertTrue(response.get("message").contains("getCurrency.code"), "Message is no ");
+        Assertions.assertTrue(response.get("message").contains("getCurrency.code"), "Code should not be valid");
     }
 
 }

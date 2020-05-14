@@ -12,6 +12,7 @@ import org.jsoup.select.Elements;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -26,8 +27,7 @@ public class CurrencyParserService {
     private final CurrencyRepository currencyRepository;
     private final CurrencyPageLoader currencyPageLoader;
 
-    @SneakyThrows
-    @Bean(name = "currencies")
+    @PostConstruct
     public List<Currency> loadAndPersist() {
         List<Currency> currencies = loadCurrencies();
         return currencyRepository.saveAll(currencies);

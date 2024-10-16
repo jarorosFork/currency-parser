@@ -2,11 +2,12 @@ package me.test.currencyparser.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,8 +19,11 @@ public class LogEntry {
     @GeneratedValue
     private Long id;
 
-
     private LocalDateTime requestDateTime;
     private String currencyCode;
     private String clientIpAddress;
+    
+    @Getter
+    @Setter
+    private String username;
 }

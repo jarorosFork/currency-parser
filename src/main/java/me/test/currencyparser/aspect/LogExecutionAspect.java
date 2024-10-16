@@ -1,5 +1,6 @@
 package me.test.currencyparser.aspect;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import me.test.currencyparser.model.LogEntry;
 import me.test.currencyparser.repository.LogEntryRepository;
@@ -8,7 +9,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
